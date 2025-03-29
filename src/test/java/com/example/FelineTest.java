@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class FelineTest {
 
@@ -28,5 +29,11 @@ public class FelineTest {
     @Test
     public void testGetKittensParams() {
         assertEquals(3, feline.getKittens(3));
+    }
+
+    @Test
+    public void unknownAnimalTypeException() {
+        Exception exception = assertThrows(Exception.class, () -> feline.getFood("Всеядные"));
+        assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", exception.getMessage());
     }
 }

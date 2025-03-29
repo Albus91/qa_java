@@ -23,19 +23,14 @@ public class FelineParameterizedTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"Хищник", Arrays.asList("Животные", "Птицы", "Рыба")},
-                {"Травоядное", Arrays.asList("Трава", "Различные растения")},
-                {"Всеядное", Arrays.asList("Жуки", "Мед")}
+                {"Травоядное", Arrays.asList("Трава", "Различные растения")}
         });
     }
 
     @Test
     public void testGetFood() throws Exception {
         Feline feline = new Feline();
-        try {
-            List<String> actualFood = feline.getFood(animalType);
-            assertEquals(expectedFood, actualFood);
-        } catch (Exception e) {
-            assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", e.getMessage());
-        }
+        List<String> actualFood = feline.getFood(animalType);
+        assertEquals(expectedFood, actualFood);
     }
 }

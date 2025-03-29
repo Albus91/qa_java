@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,5 +32,11 @@ public class LionTest {
         when(feline.getFood("Хищник")).thenReturn(expectedFood);
         List<String> actualFood = lion.getFood();
         assertEquals(expectedFood, actualFood);
+    }
+
+    @Test
+    public void testLionGenderException() {
+        Exception exception = assertThrows(Exception.class, () -> new Lion("Еще кто-то", feline));
+        assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
     }
 }
